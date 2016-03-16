@@ -1,0 +1,40 @@
+<template name="payment">
+	{{#if currentUser}}
+	{{> pay}}
+	{{else}}
+	{{> login}}
+	{{/ if}}
+
+</template>
+
+<template name="pay">
+
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				{{> navbar}}
+				<div class="row clearfix">
+					<div class="col-md-6 column">
+						<form role="form" class="payment">
+							<div class="form-group">
+								<label for="Bank Name">PayPal Name</label>
+								<input type="text" class="form-control" id="bankName" value = ""/>
+							</div>
+							<div class="form-group">
+								<label for="bankacno">PayPal Email</label>
+								<input type="number" class="form-control" id="bankAcNo" value = ""/>
+							</div>
+							<div class="form-group">
+								<label for="pay">Amount ($)</label>
+								<input type="number" class="form-control" id="bankPay" value=""/>
+							</div>
+							<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" class="btn" id="tenantSubmit" alt="Pay" >
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</template>

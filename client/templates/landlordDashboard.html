@@ -1,0 +1,63 @@
+<template name="landlordDashboard">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				{{> navbar}}
+			</div>
+		</div>
+ 		<div class="row-clearfix">
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="row-fluid">
+					<div class="info-box blue-bg">
+						<i class="glyphicon glyphicon-flash"></i>
+						<div class="count">
+							1500 kWh
+						</div>
+						<div class="title">
+							Total Solar Generated
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						{{> solarPowerGenChart}}
+					</div>					
+				</div>
+			</div><!--/.col-->
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">				
+				<div class="info-box blue-bg">
+					<i class="fa fa-shopping-cart"></i>
+					<div class="count">
+						$1200
+					</div>
+					<div class="title">
+						NMC (YTD)
+					</div>
+				</div><!--/.info-box-->	
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						{{> nmcChart}}
+					</div>
+				</div>
+			</div>		
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="info-box blue-bg">
+					<i class="glyphicon glyphicon-usd"></i>
+					<div class="count">
+						$1000
+					</div>
+					<div class="title">
+						NMC Converted (YTD)
+					</div>
+				</div><!--/.info-box-->				
+			</div><!--/.col-->
+		</div>
+	</div>
+</template>
+
+<template name="solarPowerGenChart">
+	<canvas id="solarGenChart" height="300"></canvas>
+</template>
+<template name="nmcChart">
+	<canvas id="nmcChart" width="400" height="300"></canvas>
+</template>

@@ -1,0 +1,62 @@
+<template name="powerAllocation">
+	{{#if currentUser}}
+	{{> power}}
+	{{else}}
+	{{> login}}
+	{{/ if}}
+
+</template>
+
+<template name="power">
+
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				{{> navbar}}
+				<div class="row clearfix">
+					<div class="col-md-6 column">
+						<form role="form" class="powerAllotForm">
+							<div class="form-group">
+								<label for="membername">Tenant Name</label>
+								<input type="text" class="form-control" id="tenantName" value = ""/>
+							</div>
+							<div class="form-group">
+								<label for="tenantid">Tenant ID</label>
+								<input type="number" class="form-control" id="tid" value = ""/>
+							</div>
+							<div class="form-group">
+								<label for="tAllot">Tenant Allotment (%)</label>
+								<input type="number" class="form-control" id="tiNo" value=""/>
+							</div>
+							<input type="submit" class="btn btn-default" id="tenantSubmit" value="Submit" >
+						</form>
+					</div>
+					<div class = "col-md-6 column">
+						<table class="table">
+							<thead>
+								<th>Tenant Name</th>
+								<th>Tenant ID</th>
+								<th>Tenant Allotment (%)</th>
+								<th>Remove</th>
+							</thead>
+							<tbody>
+								{{#each tenants}}
+								<tr>
+									<td>{{tenantName}}</td>
+									<td>{{tid}}</td>
+									<td>{{tiNo}}</td>
+									<td>
+									<button class="delete">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									</button></td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

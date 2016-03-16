@@ -1,0 +1,76 @@
+<template name="tenantProfile">
+	{{#if currentUser}}
+		{{> tenant}}
+	{{else}}
+		{{> login}}
+	{{/ if}}
+
+</template>
+
+<template name="tenant">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				{{> navbar}}
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<blockquote>
+							{{#if currentUser}}
+							<h3>
+								{{email}} is logged in
+							</h3>
+							{{/if}}
+							
+							<p>
+								We take our service very seriously. Make sure you have read the terms and conditions before you join our
+							</p>
+							<p>
+								group. We are very serious about the people who take us in.
+							</p>
+							<small>FlexGrid</small>
+						</blockquote>
+						<div class="row clearfix">
+							<form role="form">
+								<div class="col-md-6 column">
+									<div class="form-group">
+										<label for="membername">Tenant Name</label>
+										<input type="text" class="form-control" id="memberName" value = "{{memberName}}"/>
+									</div>
+									<div class="form-group">
+										<label for="tid">Tenant ID</label>
+										<input type="number" class="form-control" id="tid" value = "{{tid}}"/>
+									</div>									
+									<div class="form-group">
+										<label for="phone">Phone Number</label>
+										<input type="tel" class="form-control" id="phone" value="{{phone}}"/>
+									</div>
+									<div class="form-group">
+										<label for="phone">Email</label>
+										<input type="email" class="form-control" id="email" value="{{email}}" />
+									</div>
+									<input type="submit" class="btn btn-default" id="profilesubmit" value="Submit" >
+								</div>
+								<div class="col-md-6 column">
+									<div class="form-group">
+										<label for="clanname">Apartment Name</label>
+										<input type="text" class="form-control" id="apartmentName" value = "{{apartmentName}}"/>
+									</div>
+									<div class="form-group">
+										<label for="address">Address</label>
+										<input type="text" class="form-control" id="address" value = "{{address}}"/>
+									</div>
+									<div class="form-group">
+										<label for="uc">Utility Company</label>
+										<input type="text" class="form-control" id="utilCo" value = "{{utilCo}}"/>
+									</div>									
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</template>

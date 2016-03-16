@@ -1,0 +1,47 @@
+<template name="signup">
+
+	<div class="container">
+
+		<form class="login-form" action="index.html">
+			<div class="login-wrap">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_contacts"></i></span>
+					<input type="text" class="form-control" id="inputName" placeholder="Name" autofocus>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_phone"></i></span>
+					<input type="text" class="form-control" id="inputPhone" placeholder="Phone" autofocus>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_profile"></i></span>
+					<input type="text" class="form-control" id="inputEmail3" placeholder="Email" autofocus>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_key_alt"></i></span>
+					<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_key_alt"></i></span>
+					<input type="password" class="form-control" id="inputPassword4" placeholder="Confirm Password">
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="optionsRadios" id="inputUserType1" value="tenant" checked>
+						Tenant 
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="optionsRadios" id="inputUserType2" value="landlord">
+						Landlord
+					</label>
+				</div>
+				<button class="btn btn-primary btn-lg btn-block" type="submit">
+					Sign Up
+				</button>
+			</div>
+		</form>
+
+	</div>
+
+</template>

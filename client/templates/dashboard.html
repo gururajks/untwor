@@ -1,0 +1,17 @@
+<template name="dashboard">
+	{{#if currentUser}}
+		{{> dasboardLogin}}
+	{{else}}
+		{{> login}}
+	{{/ if}}
+
+</template>
+
+<template name="dasboardLogin">
+
+	{{#if navbarType}}
+		{{> tenantDashboard}}
+	{{else}}
+		{{> landlordDashboard}}
+	{{/if}}
+</template>
