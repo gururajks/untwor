@@ -1,3 +1,5 @@
+Meteor.subscribe('solarData');
+
 function drawSolarGenChart() {
 
 	var data = {
@@ -50,6 +52,13 @@ Template.nmcChart.onRendered(function() {
 Template.solarPowerGenChart.onRendered(function(){
 	drawSolarGenChart();
 });
+
+Template.landlordDashboard.helpers({
+	solarGen : function() {
+		return SolarData.find()[0];		
+	}
+});
+
 
 
 Template.landlordDashboard.events({

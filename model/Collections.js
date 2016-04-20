@@ -1,4 +1,9 @@
+//Collection of tenant allotment by a landlord
 TenantAllot = new Mongo.Collection('tenantAllot');
+
+//Collection of solar data collected by a landlord
+SolarData = new Mongo.Collection('solarData');
+
 
 Meteor.methods({
 	insertTenantAllot : function(tenantInfo) {
@@ -13,6 +18,7 @@ Meteor.methods({
 		return writeResults;
 	},
 	
+		
 	updateProfile : function(member) {
 		var userId = Meteor.userId();
 		var memberType = Meteor.user().profile.memberType;

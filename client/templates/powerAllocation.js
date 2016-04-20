@@ -6,6 +6,17 @@ Template.power.helpers({
 	}
 });
 
+
+function sendEmail(tenantName, tid, tiNo) {
+	Meteor.call('sendEmail',
+            'gururajks1988@gmail.com',
+            'gururajks1988@gmail.com',
+            'Tenant Allocation',
+            'TenantName: ' + tenantName + '   ID:' + tid + 'Allot:' + tiNo);
+    
+}
+
+
 Template.power.events({
 	
 	"submit .powerAllotForm" : function(e, t) {
@@ -16,6 +27,8 @@ Template.power.events({
 			tid			: t.find("#tid").value,
 			tiNo		: t.find("#tiNo").value
 		};
+		
+		sendEmail(tenantInfo.tenantName, tenantInfo.tid, tenantInfo.tiNo);	
 		
 		Meteor.call('insertTenantAllot', tenantInfo, function(err, writeResults){
 			if (writeResults == 0) {
