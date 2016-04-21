@@ -12,7 +12,7 @@ function sendEmail(tenantName, tid, tiNo) {
             'gururajks1988@gmail.com',
             'gururajks1988@gmail.com',
             'Tenant Allocation',
-            'TenantName: ' + tenantName + '   ID:' + tid + 'Allot:' + tiNo);
+            'TenantName: ' + tenantName + '   ID:' + tid + '      Allot:' + tiNo);
     
 }
 
