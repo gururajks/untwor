@@ -78,7 +78,7 @@ Template.map.onCreated(function() {
             var infowindow = new google.maps.InfoWindow({
                 content: "Guide",
                 maxWidth: 200
-            });
+            }); 
             google.maps.event.addListener(marker,'click', function() {
                 infowindow.setContent("Guide");
                 infowindow.open(map.instance, this);
