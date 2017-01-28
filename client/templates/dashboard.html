@@ -1,13 +1,13 @@
 <template name="dashboard">
 	{{#if currentUser}}
-		{{> dasboardLogin}}
+		{{> dashboardLogin}}
 	{{else}}
 		{{> login}}
 	{{/ if}}
 
 </template>
 
-<template name="dasboardLogin">
+<template name="dashboardLogin">
 
 	{{#if navbarType}}
 		{{> travellerDashboard}}

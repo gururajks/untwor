@@ -1,7 +1,14 @@
+ Location = new Mongo.Collection('guideLocation');
 
 Meteor.methods({
 	
-		
+	insertLocation : function(location) {
+		Location.insert({
+			address : location
+		})
+
+	},
+	
 	updateProfile : function(member) {
 		var userId = Meteor.userId();
 		var memberType = Meteor.user().profile.memberType;

@@ -1,5 +1,5 @@
 if (Meteor.isClient) {
-	Template.dasboardLogin.helpers({
+	Template.dashboardLogin.helpers({
 
 		navbarType : function() {
 			if (Meteor.user().profile) {

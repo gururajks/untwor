@@ -1,8 +1,6 @@
 
 Template.askGuide.helpers({
-	tenants : function(){
-		return TenantAllot.find();
-	}
+
 });
 
 
@@ -30,9 +28,29 @@ Template.map.onRendered(function() {
   GoogleMaps.load({v: '3', key: 'AIzaSyCYeUatP0os9SBySJy7SBWwpwH_DmweYbk'});
 });
 
+Template.map.onCreated(function() {  
+  GoogleMaps.ready('map', function(map) {
+    google.maps.event.addListener(map.instance, 'click', function(event) {
+      //Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+      map.instance.panTo(event.latLng);
+    });
+
+    // The code shown below goes here
+
+  });
+});
+
 
 Template.askGuide.events({
-	
-	
+	"submit form" : function(e, t) {
+		e.preventDefault();
+		
+		var location = {
+			location  			: t.find("#yourLoc").value
+		};
+    Meteor.call('insertLocation', location, function(err, writeResults){
+
+    });
+  }
 	
 });
