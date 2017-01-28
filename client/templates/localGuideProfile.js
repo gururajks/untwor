@@ -1,4 +1,4 @@
-Template.landlord.helpers({
+Template.localGuide.helpers({
 
 	email : function() {
 		if (Meteor.user().emails[0].address) {
@@ -27,7 +27,7 @@ Template.landlord.helpers({
 	}
 });
 
-Template.landlord.events({
+Template.localGuide.events({
 	"submit form" : function(e, t) {
 		e.preventDefault();
 		

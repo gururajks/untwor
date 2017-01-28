@@ -1,6 +1,5 @@
-Meteor.subscribe('tenantAllot');
 
-Template.power.helpers({
+Template.askGuide.helpers({
 	tenants : function(){
 		return TenantAllot.find();
 	}
@@ -16,30 +15,24 @@ function sendEmail(tenantName, tid, tiNo) {
     
 }
 
+Template.map.helpers({  
+  mapOptions: function() {
+    if (GoogleMaps.loaded()) {
+      return {
+        center: new google.maps.LatLng(-37.8136, 144.9631),
+        zoom: 8
+      };
+    }
+  }
+});
 
-Template.power.events({
+Template.map.onRendered(function() {
+  GoogleMaps.load({v: '3', key: 'AIzaSyCYeUatP0os9SBySJy7SBWwpwH_DmweYbk'});
+});
+
+
+Template.askGuide.events({
 	
-	"submit .powerAllotForm" : function(e, t) {
-		e.preventDefault();
-		
-		var tenantInfo = {
-			tenantName 	: t.find("#tenantName").value,
-			tid			: t.find("#tid").value,
-			tiNo		: t.find("#tiNo").value
-		};
-		
-		sendEmail(tenantInfo.tenantName, tenantInfo.tid, tenantInfo.tiNo);	
-		
-		Meteor.call('insertTenantAllot', tenantInfo, function(err, writeResults){
-			if (writeResults == 0) {
-				toastr.error("Tenant Add failed", "Error");
-			}
-		});		
-		e.target.reset();
-	},
-	"click .delete" : function () {
-		TenantAllot.remove({_id : this._id});
-	}
 	
 	
 });
