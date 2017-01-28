@@ -3,7 +3,7 @@ if (Meteor.isClient) {
 
 		navbarType : function() {
 			if (Meteor.user().profile) {
-				if (Meteor.user().profile.memberType == "tenant") {
+				if (Meteor.user().profile.memberType == "traveller") {
 					return true;
 				} else {
 					return false;

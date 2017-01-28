@@ -24,11 +24,6 @@ Template.landlord.helpers({
 		if (Meteor.user().profile) {
 			return Meteor.user().profile.address;
 		}
-	},
-	utilCo : function() {
-		if (Meteor.user().profile) {
-			return Meteor.user().profile.utilCo;
-		}
 	}
 });
 
@@ -42,8 +37,7 @@ Template.landlord.events({
 			tid					: 0,
 			email 				: t.find("#email").value,
 			phone 				: t.find("#phone").value,
-			address 			: t.find("#address").value,
-			utilCo				: t.find("#utilCo").value
+			address 			: t.find("#address").value
 		};
 
 		Meteor.call("updateProfile", member, function(err, writeResults) {

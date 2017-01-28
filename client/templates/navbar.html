@@ -1,12 +1,12 @@
 <template name="navbar">
 	{{#if navbarType}}
-		{{> tenantNavBar}}
+		{{> travellerNavBar}}
 	{{else}}
-		{{> landlordNavBar}}
+		{{> localGuideNavBar}}
 	{{/if}}
 </template>
 
-<template name="tenantNavBar">
+<template name="travellerNavBar">
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -41,7 +41,7 @@
 
 </template>
 
-<template name="landlordNavBar">
+<template name="localGuideNavBar">
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

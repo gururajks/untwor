@@ -1,4 +1,4 @@
-Template.tenant.helpers({
+Template.traveller.helpers({
 
 	email : function() {
 		if (Meteor.user().emails[0].address) {
@@ -29,15 +29,10 @@ Template.tenant.helpers({
 		if (Meteor.user().profile) {
 			return Meteor.user().profile.address;
 		}
-	},
-	utilCo : function() {
-		if (Meteor.user().profile) {
-			return Meteor.user().profile.utilCo;
-		}
 	}
 });
 
-Template.tenant.events({
+Template.traveller.events({
 	"submit form" : function(e, t) {
 		e.preventDefault();
 		
@@ -47,8 +42,7 @@ Template.tenant.events({
 			apartmentName 		: t.find("#apartmentName").value,
 			email 				: t.find("#email").value,
 			phone 				: t.find("#phone").value,
-			address 			: t.find("#address").value,
-			utilCo				: t.find("#utilCo").value
+			address 			: t.find("#address").value
 		};
 
 		Meteor.call("updateProfile", member, function(err, writeResults) {
