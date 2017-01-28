@@ -1,19 +1,13 @@
 Meteor.subscribe('guideLocation');
 
 Template.askGuide.helpers({
-
+  guideName : function() {
+    
+  }
 });
 
 var markers = [];
 var radiusCircle;
-function sendEmail(tenantName, tid, tiNo) {
-	Meteor.call('sendEmail',
-            'gururajks1988@gmail.com',
-            'gururajks1988@gmail.com',
-            'Tenant Allocation',
-            'TenantName: ' + tenantName + '   ID:' + tid + '      Allot:' + tiNo);
-    
-}
 
 Template.map.helpers({  
   mapOptions: function() {
@@ -29,8 +23,13 @@ Template.map.helpers({
 Template.map.onRendered(function() {
   GoogleMaps.load({v: '3', key: 'AIzaSyCYeUatP0os9SBySJy7SBWwpwH_DmweYbk', libraries: 'geometry'});
  
- 
 });
+
+function infoWindowClick() {
+  console.log('clicked');
+  //Meteor.call('sendEmail', emailid, 'gururajks1988@gmail.com', "Booking confirmation", "City Guide Service Request" );
+}
+
 
 Template.map.onCreated(function() {  
   GoogleMaps.ready('map', function(map) {
@@ -64,6 +63,11 @@ Template.map.onCreated(function() {
       });
       var locs = Location.find().fetch();
       console.log(locs.length);
+      var gg_icon = {
+          url : 'gg.png',
+           scaledSize : new google.maps.Size(32, 32)
+      };
+      
       _.each(locs, function(location) {
           var guideLatLng = new google.maps.LatLng(location.lat, location.lng);
           var radius = google.maps.geometry.spherical.computeDistanceBetween(event.latLng, guideLatLng );  
@@ -71,16 +75,19 @@ Template.map.onCreated(function() {
            marker = new google.maps.Marker({
               position: guideLatLng,
               map : map.instance,
-              icon : 'map_icon.png',
+              icon : gg_icon,
               title:"Guide"
             });
+            var content="<h3>" + location.memberName + "</h3> \
+            <p>Reviews:" + location.reviews + "</p><button id='sendEmail'>Book</button>";
             markers.push(marker);
             var infowindow = new google.maps.InfoWindow({
-                content: "Guide",
+                content: content,
                 maxWidth: 200
             }); 
+            var inst_email = location.email;
             google.maps.event.addListener(marker,'click', function() {
-                infowindow.setContent("Guide");
+                //infowindow.setContent("Guide");
                 infowindow.open(map.instance, this);
             });
           }
@@ -98,12 +105,21 @@ Template.askGuide.events({
 	"submit form" : function(e, t) {
 		e.preventDefault();
 		
-		var location = {
-			location  			: t.find("#yourLoc").value
+		var review = {
+      memberName  : t.find("#memberName").value,
+			stars  			: t.find("#review").value
 		};
-    Meteor.call('insertLocation', location, function(err, writeResults){
-
+    Meteor.call('updateReview', review, function(err, writeResults){
+      if (writeResults == 1) {
+				toastr.success("Review updated", "Success");
+			} else {
+				toastr.error("Review failed to update", "Error");
+			}
     });
+  },
+  "button click" : function(e, t){
+
   }
+
 	
 });

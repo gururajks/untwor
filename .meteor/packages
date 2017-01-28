@@ -12,7 +12,7 @@ iron:router
 jquery
 mizzao:bootstrap-3
 chart:chart
-email@1.1.18
+email
 meteor-base
 mobile-experience
 mongo

@@ -24,6 +24,9 @@ Template.localGuide.helpers({
 		if (Meteor.user().profile) {
 			return Meteor.user().profile.address;
 		}
+	},
+	memberType : function() {
+		return Meteor.user().profile.memberType;
 	}
 });
 

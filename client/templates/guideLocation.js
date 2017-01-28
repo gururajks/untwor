@@ -44,10 +44,10 @@ Template.mapLocal.onCreated(function() {
         title:"My Location"
       });
       map.instance.panTo(event.latLng);
-	  //console.log(event.latLn;
+	  
       // To add the marker to the map, call setMap();
 	  Meteor.call('insertLocation', event.latLng.lat(), event.latLng.lng(), function(err, writeResults){
-
+     
 	  });
       
 
