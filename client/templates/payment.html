@@ -1,40 +1,40 @@
 <template name="payment">
 	{{#if currentUser}}
-	{{> pay}}
+	{{> guideLoc}}
 	{{else}}
 	{{> login}}
 	{{/ if}}
 
 </template>
 
-<template name="pay">
+<template name="guideLoc">
 
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
 				{{> navbar}}
 				<div class="row clearfix">
-					<div class="col-md-6 column">
-						<form role="form" class="payment">
+					<div class="col-md-8">
+						{{> mapLocal }}
+					</div>
+					<div class="col-md-4">
+						<form role="form" class="localInfo">
 							<div class="form-group">
-								<label for="Bank Name">PayPal Name</label>
-								<input type="text" class="form-control" id="bankName" value = ""/>
+								<label for="Location">Your Location</label>
+								<input type="text" class="form-control" id="yourLoc" value = ""/>
 							</div>
-							<div class="form-group">
-								<label for="bankacno">PayPal Email</label>
-								<input type="number" class="form-control" id="bankAcNo" value = ""/>
-							</div>
-							<div class="form-group">
-								<label for="pay">Amount ($)</label>
-								<input type="number" class="form-control" id="bankPayAmnt" value=""/>
-							</div>
-							<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" class="btn" id="tenantSubmit" alt="Pay" >
+							<input type="submit" class="btn btn-default" id="profilesubmit" value="Book" >
 						</form>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
 
 </template>
+
+<template name="mapLocal">  
+  <div class="map-container">
+    {{> googleMap name="mapLocal" options=mapOptions}}
+  </div>
+</template>  

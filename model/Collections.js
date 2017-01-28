@@ -1,10 +1,11 @@
- Location = new Mongo.Collection('guideLocation');
+Location = new Mongo.Collection('guideLocation');
 
 Meteor.methods({
 	
-	insertLocation : function(location) {
+	insertLocation : function(lat, lng) {
 		Location.insert({
-			address : location
+			lat : lat,
+			lng : lng
 		})
 
 	},
