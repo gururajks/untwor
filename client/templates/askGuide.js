@@ -23,13 +23,13 @@ Template.map.helpers({
 Template.map.onRendered(function() {
   GoogleMaps.load({v: '3', key: 'AIzaSyCYeUatP0os9SBySJy7SBWwpwH_DmweYbk', libraries: 'geometry'});
  
+ 
 });
 
-function infoWindowClick() {
+function infoWindowClick(emailid) {
   console.log('clicked');
   //Meteor.call('sendEmail', emailid, 'gururajks1988@gmail.com', "Booking confirmation", "City Guide Service Request" );
 }
-
 
 Template.map.onCreated(function() {  
   GoogleMaps.ready('map', function(map) {
@@ -79,13 +79,12 @@ Template.map.onCreated(function() {
               title:"Guide"
             });
             var content="<h3>" + location.memberName + "</h3> \
-            <p>Reviews:" + location.reviews + "</p><button id='sendEmail'>Book</button>";
+            <p>Reviews:" + location.reviews + "</p><button>Book</button>";
             markers.push(marker);
             var infowindow = new google.maps.InfoWindow({
                 content: content,
                 maxWidth: 200
             }); 
-            var inst_email = location.email;
             google.maps.event.addListener(marker,'click', function() {
                 //infowindow.setContent("Guide");
                 infowindow.open(map.instance, this);
